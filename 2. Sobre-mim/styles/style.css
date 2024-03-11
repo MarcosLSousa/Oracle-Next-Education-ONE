@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=MonteCarlo&family=Playfair+Display:wght@400;600&display=swap'); /* import das fontes utilizadas no nosso projeto, obtidas no Google Fonts. */
+
+/* Variáveis globais CSS */
+:root {
+    --cor-primaria: #533231;
+    --cor-secundaria: #F6F6F6;
+    --cor-terciaria: #DCAB88;
+    --cor-hover: #80514F;
+
+    --fonte-primaria: 'Playfair Display', serif;
+    --fonte-secundaria: 'Lora', serif;
+    --fonte-rodape: 'MonteCarlo', cursive;
+}
+
+* {     /*retira o espaçamento da margin e padding de toda a pág. que são atribuídos por padrão nas páginas. */
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    box-sizing: border-box; /*nao deixa o conteúdo do elemento filho extrapolar a box do elemento pai */
+    /*height: 100vh; /* vh = viewport height. Deixa o body com 100% da tela. Utilizar width: 100% para ocupar toda a tela.
+    - Exemplo para centralizar os elementos no centro da tela:
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    - Flexbox: responsividade e alinhamento
+    No seu CSS, selecione o container principal e defina display: flex;.
+    Use flex-direction: row; ou column; para ajustar a direção dos itens.
+    Adicione flex-wrap: wrap; para permitir que os itens se ajustem e mudem de linha conforme o tamanho da tela.
+    }
+    */
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+}
+
+.cabecalho {
+    padding: 2% 0% 0% 15%;
+}
+
+.cabecalho__menu {
+    display: flex;
+    gap: 80px;
+}
+
+.cabecalho__menu__link {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; /* REM é unidade de medida de tamanho autoajustável na tela, baseada nas config. do navegador do usuário final. Ou seja, mudando, p. ex., tamanho da fonte no navegador, a fonte do site muda de tamanho  (o que não aconteceria setando px por exemplo). 
+    Pra calcular devemos dividir o px por 16. Ex.: 32px/16 = 2rem. */
+    font-weight: 600;
+    color: var(--cor-terciaria);
+    text-decoration: none;
+}
+
+.apresentacao { /* classe criada na tag principal para formatar o posicionamento dos elementos (ler sobre flexbox para saber mais)*/
+    padding: 5% 15%;
+    display: flex; /* flex para podermos utilizar o flexbox https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
+    align-items: center; /*https://css-tricks.com/snippets/css/a-guide-to-flexbox */
+    justify-content: space-between;
+    gap: 82px;
+}
+
+.apresentacao__conteudo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.apresentacao__conteudo__titulo {
+    font-size: 2.25rem;
+    font-family: var(--fonte-primaria);
+}
+
+.titulo-destaque {
+    color: var(--cor-terciaria);
+}
+
+.apresentacao__conteudo__texto {
+    font-size: 1.5rem;
+    font-family: var(--fonte-secundaria);
+}
+
+.apresentacao__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.apresentacao__links_subtitulo {
+    font-family: var(--fonte-primaria);
+    font-weight: 400;
+    font-size: 1.55rem;
+}
+
+.apresentacao__links__botao {
+    /* background-color: #DCAB88; **Atalho para coment: ctrl+k ctrl+c** */ 
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    width: 50%;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px solid var(--cor-terciaria);
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 6.5px 0; /*o segundo valor (0) é referente ao eixo horizontal que ficou em zero porque não queremos alterar */
+    text-decoration: none;
+    color: var(--cor-secundaria); 
+    font-family: var(--fonte-secundaria);
+}
+
+.apresentacao__links__botao:hover {
+    background-color: var(--cor-hover);
+    padding: 1.5%;
+}
+
+.apresentacao__imagem {
+    max-width:  700px;
+    max-height: 550px;
+    width: auto;
+    height: auto;
+    border-radius: 5%;
+}
+
+.rodape {
+    padding: 3px;
+    color: var(--cor-primaria);
+    background-color: var(--cor-terciaria);
+    text-align: center;
+    font-family: var(--fonte-rodape);
+    font-size: 1.5rem;
+}
+
+@media (max-width: 1150px) { /*Se a largura da tela ficar menor que esse valor (podemos testar pelo Figma), então implementa as configs. abaixo */
+    /* Podemos condicionar um intervalo de tamanho de tela, mín e máx, exemplo: 
+    @media (min-width: 480px ) and (max-width: 800px) */
+    .cabecalho {
+        padding: 10% 0% 5% 0%;
+    }
+
+    .cabecalho__menu {
+        justify-content: center;
+    }
+
+    .apresentacao {
+        flex-direction: column-reverse;
+        padding: 5%;
+    }
+
+    .apresentacao__conteudo {
+        width: auto;
+    }
+}
